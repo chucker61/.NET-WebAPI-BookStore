@@ -1,0 +1,6 @@
+2023-07-14 11:07:45.1634 Info Message Template Auto Format enabled
+2023-07-14 11:07:45.3830 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-14 11:07:45.4227 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\source\repos\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-07-14 11:08:37.0083 Info Message Template Auto Format enabled
+2023-07-14 11:08:37.0874 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-14 11:08:37.1182 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\source\repos\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config

@@ -48,8 +48,10 @@ namespace Presentation.Controllers
         {
             try
             {
-                _manager.BookServices.CreateOneBook(book);
+                if (book == null) 
+                    return NotFound(nameof(book));
 
+                _manager.BookServices.CreateOneBook(book);
                 return StatusCode(201, book);
             }
             catch (Exception ex)
@@ -62,6 +64,9 @@ namespace Presentation.Controllers
         {
             try
             {
+                if (book is null)
+                    return NotFound(nameof(book));
+
                 _manager.BookServices.UpdateOneBook(id, book, true);
 
                 return NoContent();
