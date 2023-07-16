@@ -29,66 +29,38 @@ namespace Presentation.Controllers
         [HttpGet("{id:int}")]
         public IActionResult GetOneBook([FromRoute] int id)
         {
-            try
-            {
+                throw new Exception("!!!");
                 var book = _manager.BookServices.GetOneBookById(id, false);
                 if (book == null)
                     return NotFound();
 
                 return Ok(book);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-
         }
         [HttpPost]
         public IActionResult CreateOneBook([FromBody] Book book)
         {
-            try
-            {
-                if (book == null) 
-                    return NotFound(nameof(book));
+            if (book == null)
+                return NotFound(nameof(book));
 
-                _manager.BookServices.CreateOneBook(book);
-                return StatusCode(201, book);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            _manager.BookServices.CreateOneBook(book);
+            return StatusCode(201, book);
         }
         [HttpPut("{id:int}")]
         public IActionResult UpdateOneBook([FromRoute] int id, [FromBody] Book book)
         {
-            try
-            {
-                if (book is null)
-                    return NotFound(nameof(book));
+            if (book is null)
+                return NotFound(nameof(book));
 
-                _manager.BookServices.UpdateOneBook(id, book, true);
+            _manager.BookServices.UpdateOneBook(id, book, true);
 
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return NoContent();
         }
         [HttpDelete("{id:int}")]
         public IActionResult DeleteOneBooks([FromRoute] int id)
         {
-            try
-            {
-                _manager.BookServices.DeleteOneBook(id, true);
+            _manager.BookServices.DeleteOneBook(id, true);
 
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return NoContent();
         }
     }
 }

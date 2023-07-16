@@ -4,3 +4,27 @@
 2023-07-14 11:08:37.0083 Info Message Template Auto Format enabled
 2023-07-14 11:08:37.0874 Info Registered target NLog.Targets.FileTarget(Name=logfile)
 2023-07-14 11:08:37.1182 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\source\repos\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-07-15 12:51:27.1382 Info Message Template Auto Format enabled
+2023-07-15 12:51:27.2151 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-15 12:51:27.2452 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\source\repos\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-07-15 13:01:20.2644 Info AppDomain Shutting down. LogFactory closing...
+2023-07-15 13:01:20.2749 Info LogFactory has been closed.
+2023-07-16 09:39:16.4557 Info Message Template Auto Format enabled
+2023-07-16 09:39:16.5789 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-16 09:39:16.5943 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-07-16 09:39:19.5230 Info AppDomain Shutting down. LogFactory closing...
+2023-07-16 09:39:19.5306 Info LogFactory has been closed.
+2023-07-16 09:41:03.1646 Info Message Template Auto Format enabled
+2023-07-16 09:41:03.2426 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-16 09:41:03.2688 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-07-16 19:30:37.0652 Info Message Template Auto Format enabled
+2023-07-16 19:30:37.1567 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-16 19:30:37.1932 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-07-16 19:38:45.2913 Info Message Template Auto Format enabled
+2023-07-16 19:38:45.4119 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-16 19:38:45.4487 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-07-16 19:38:55.6804 Info Message Template Auto Format enabled
+2023-07-16 19:38:55.7821 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-16 19:38:55.8173 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-07-16 19:39:22.8702 Info AppDomain Shutting down. LogFactory closing...
+2023-07-16 19:39:22.8947 Info LogFactory has been closed.
