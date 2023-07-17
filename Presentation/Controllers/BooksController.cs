@@ -2,6 +2,7 @@
 using Entities.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
+using Entities.DataTransferObjects;
 
 namespace Presentation.Controllers
 {
@@ -39,12 +40,12 @@ namespace Presentation.Controllers
             return StatusCode(201, book);
         }
         [HttpPut("{id:int}")]
-        public IActionResult UpdateOneBook([FromRoute] int id, [FromBody] Book book)
+        public IActionResult UpdateOneBook([FromRoute] int id, [FromBody] BookDtoForUpdate bookDto)
         {
-            if (book is null)
+            if (bookDto is null)
                 return BadRequest();
 
-            _manager.BookServices.UpdateOneBook(id, book, true);
+            _manager.BookServices.UpdateOneBook(id, bookDto, true);
 
             return NoContent();
         }
