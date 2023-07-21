@@ -31,12 +31,15 @@ namespace Presentation.Controllers
             return Ok(book);
         }
         [HttpPost]
-        public IActionResult CreateOneBook([FromBody] Book book)
+        public IActionResult CreateOneBook([FromBody] BookDtoForInsertion bookDto)
         {
-            if (book == null)
+            if (bookDto == null)
                 return BadRequest();
 
-            _manager.BookServices.CreateOneBook(book);
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+            
+            var book = _manager.BookServices.CreateOneBook(bookDto);
             return StatusCode(201, book);
         }
         [HttpPut("{id:int}")]
@@ -44,9 +47,10 @@ namespace Presentation.Controllers
         {
             if (bookDto is null)
                 return BadRequest();
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
 
-            _manager.BookServices.UpdateOneBook(id, bookDto, true);
-
+            _manager.BookServices.UpdateOneBook(id, bookDto, false);
             return NoContent();
         }
         [HttpDelete("{id:int}")]
