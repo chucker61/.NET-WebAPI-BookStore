@@ -3,6 +3,7 @@ using Entities.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
 using Entities.DataTransferObjects;
+using Presentation.ActionFilters;
 
 namespace Presentation.Controllers
 {
@@ -27,29 +28,19 @@ namespace Presentation.Controllers
         public async Task<IActionResult> GetOneBookAsync([FromRoute] int id)
         {
             var book = await _manager.BookServices.GetOneBookByIdAsync(id, false);
-
             return Ok(book);
         }
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost]
         public async Task<IActionResult> CreateOneBookAsync([FromBody] BookDtoForInsertion bookDto)
-        {
-            if (bookDto == null)
-                return BadRequest();
-
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState);
-            
+        {   
             var book = await _manager.BookServices.CreateOneBookAsync(bookDto);
             return StatusCode(201, book);
         }
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateOneBookAsync([FromRoute] int id, [FromBody] BookDtoForUpdate bookDto)
         {
-            if (bookDto is null)
-                return BadRequest();
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState);
-
             await _manager.BookServices.UpdateOneBookAsync(id, bookDto, false);
             return NoContent();
         }
