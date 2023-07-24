@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Entities.RequestFeatures
+{
+    public class PagedList<T> : List<T>
+    {
+        public MetaData MetaData { get; set; }
+        public PagedList(List<T> items,int count,int pageSize,int pageNumber)
+        {
+            MetaData = new MetaData()
+            {
+                TotalCount = count,
+                CurrentPage = pageNumber,
+                PageSize = pageSize,
+                TotalPage = (int)Math.Ceiling(count / (decimal)pageSize)
+            };
+            AddRange(items);
+        }
+        public static PagedList<T> ToPagedList(IEnumerable<T> source,int pageSize, int pageNumber)
+        {
+            var count = source.Count();
+            var items = source.Skip((pageNumber-1)*pageSize).Take(pageSize).ToList();
+            return new PagedList<T>(items, count, pageSize, pageNumber);
+        }
+    }
+}

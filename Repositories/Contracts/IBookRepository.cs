@@ -1,4 +1,5 @@
-﻿using Entity.Models;
+﻿using Entities.RequestFeatures;
+using Entity.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Repositories.Contracts
         void CreateOneBook(Book book);
         void DeleteOneBook(Book book);
         void UpdateOneBook(Book book);
-        Task<IEnumerable<Book>> GetAllBooksAsync(bool trackChanges);
+        Task<PagedList<Book>> GetAllBooksAsync(BookParameters bookParams,bool trackChanges);
         Task<Book> GetOneBookByIdAsync(int id,bool trackChanges);
     }
 }

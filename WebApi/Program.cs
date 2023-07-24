@@ -32,8 +32,9 @@ builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerManager();
-builder.Services.ConfigureActionFilters();
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.ConfigureActionFilters();
+builder.Services.ConfigureCors();
 
 
 
@@ -55,6 +56,8 @@ if (app.Environment.IsProduction())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 

@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
 using Entities.DataTransferObjects;
 using Presentation.ActionFilters;
+using Entities.RequestFeatures;
+using Microsoft.AspNetCore.Http.Headers;
+using System.Text.Json;
 
 namespace Presentation.Controllers
 {
@@ -20,10 +23,11 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllBooksAsync()
+        public async Task<IActionResult> GetAllBooksAsync([FromQuery] BookParameters bookParams)
         {
-            var books = await _manager.BookServices.GetAllBooksAsync(false);
-            return Ok(books);
+            var pagedResult = await _manager.BookServices.GetAllBooksAsync(bookParams,false);
+            Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(pagedResult.metaData));
+            return Ok(pagedResult.books);
         }
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOneBookAsync([FromRoute] int id)
