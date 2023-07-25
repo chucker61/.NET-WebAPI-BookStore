@@ -22,7 +22,8 @@ namespace Repositories.EFCore
 
         public async Task<PagedList<Book>> GetAllBooksAsync(BookParameters bookParams,bool trackChanges)
         {
-            var books = await FindAll(trackChanges).ToListAsync();
+            var books = await FindAll(trackChanges)
+                .FilterBooks(bookParams.MinPrice,bookParams.MaxPrice).ToListAsync();
             return PagedList<Book>.ToPagedList(books, bookParams.PageSize,bookParams.PageNumber);
         }
             
