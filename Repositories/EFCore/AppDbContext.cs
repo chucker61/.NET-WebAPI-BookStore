@@ -1,4 +1,4 @@
-﻿using Entity.Models;
+﻿using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Repositories.EFCore.Config;
 using System;

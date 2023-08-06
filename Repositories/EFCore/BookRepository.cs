@@ -1,5 +1,5 @@
-﻿using Entities.RequestFeatures;
-using Entity.Models;
+﻿using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Contracts;
 using Repositories.EFCore.Extensions;

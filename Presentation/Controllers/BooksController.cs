@@ -1,5 +1,4 @@
-﻿using Entity.Models;
-using Entities.Exceptions;
+﻿using Entities.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
 using Entities.DataTransferObjects;
@@ -7,6 +6,7 @@ using Presentation.ActionFilters;
 using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Http.Headers;
 using System.Text.Json;
+using NLog.Config;
 
 namespace Presentation.Controllers
 {
@@ -21,13 +21,19 @@ namespace Presentation.Controllers
         {
             _manager = manager;
         }
-
+        [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         [HttpGet]
         public async Task<IActionResult> GetAllBooksAsync([FromQuery] BookParameters bookParams)
         {
-            var pagedResult = await _manager.BookServices.GetAllBooksAsync(bookParams,false);
-            Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(pagedResult.metaData));
-            return Ok(pagedResult.books);
+            var linkParameters = new LinkParameters
+            {
+                BookParameters = bookParams,
+                HttpContext = HttpContext
+            };
+            var result = await _manager.BookServices.GetAllBooksAsync(linkParameters,false);
+            Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(result.metaData));
+
+            return result.linkResponse.HasLinks ? Ok(result.linkResponse.LinkedEntities) : Ok(result.linkResponse.ShapedEntities);
         }
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOneBookAsync([FromRoute] int id)
