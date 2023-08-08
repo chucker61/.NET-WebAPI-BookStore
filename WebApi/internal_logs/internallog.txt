@@ -231,3 +231,18 @@
 2023-08-08 14:26:35.4887 Info Message Template Auto Format enabled
 2023-08-08 14:26:35.5745 Info Registered target NLog.Targets.FileTarget(Name=logfile)
 2023-08-08 14:26:35.5970 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-08-08 14:45:53.3263 Info Message Template Auto Format enabled
+2023-08-08 14:45:53.4124 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-08-08 14:45:53.4382 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-08-08 15:10:27.6549 Info Message Template Auto Format enabled
+2023-08-08 15:10:27.7525 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-08-08 15:10:27.7759 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-08-08 15:12:54.0415 Info Message Template Auto Format enabled
+2023-08-08 15:12:54.1219 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-08-08 15:12:54.1543 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-08-08 15:16:11.5239 Info Message Template Auto Format enabled
+2023-08-08 15:16:11.6141 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-08-08 15:16:11.6396 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-08-08 15:17:55.4134 Info Message Template Auto Format enabled
+2023-08-08 15:17:55.4883 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-08-08 15:17:55.5133 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config

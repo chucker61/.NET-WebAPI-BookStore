@@ -55,7 +55,10 @@ namespace WebApi.Extensions
                 if (systemTextJsonOutputFormatter != null)
                 {
                     systemTextJsonOutputFormatter.SupportedMediaTypes
-                    .Add("application/vnd.btkakademi.hateoas+json");
+                    .Add("application/vnd.mmc.hateoas+json");
+
+                    systemTextJsonOutputFormatter.SupportedMediaTypes
+                    .Add("application/vnd.mmc.apiroot+json");
                 }
 
                 var xmlOutputFormatter = config
@@ -65,7 +68,10 @@ namespace WebApi.Extensions
                 if (xmlOutputFormatter is not null)
                 {
                     xmlOutputFormatter.SupportedMediaTypes
-                    .Add("application/vnd.btkakademi.hateoas+xml");
+                    .Add("application/vnd.mmc.hateoas+xml");
+
+                    xmlOutputFormatter.SupportedMediaTypes
+                    .Add("application/vnd.mmc.apiroot+xml");
                 }
             });
         }
