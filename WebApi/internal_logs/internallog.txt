@@ -246,3 +246,21 @@
 2023-08-08 15:17:55.4134 Info Message Template Auto Format enabled
 2023-08-08 15:17:55.4883 Info Registered target NLog.Targets.FileTarget(Name=logfile)
 2023-08-08 15:17:55.5133 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-08-08 16:17:09.2734 Info Message Template Auto Format enabled
+2023-08-08 16:17:09.3581 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-08-08 16:17:09.3902 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-08-08 16:21:13.9969 Info Message Template Auto Format enabled
+2023-08-08 16:21:14.0659 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-08-08 16:21:14.0874 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-08-08 16:52:31.4257 Info Message Template Auto Format enabled
+2023-08-08 16:52:31.4994 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-08-08 16:52:31.5224 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-08-08 17:04:48.0840 Info Message Template Auto Format enabled
+2023-08-08 17:04:48.1850 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-08-08 17:04:48.2187 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-08-08 17:12:50.9286 Info Message Template Auto Format enabled
+2023-08-08 17:12:51.0244 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-08-08 17:12:51.0504 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config
+2023-08-08 17:23:11.7691 Info Message Template Auto Format enabled
+2023-08-08 17:23:11.8535 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-08-08 17:23:11.8819 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\melik\OneDrive\Masaüstü\projects\bookStore\bookStore\WebApi\bin\Debug\net6.0\nlog.config

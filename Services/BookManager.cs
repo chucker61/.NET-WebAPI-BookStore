@@ -4,6 +4,8 @@ using Entities.Exceptions;
 using Entities.LinkModels;
 using Entities.Models;
 using Entities.RequestFeatures;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Repositories.Contracts;
 using Services.Contracts;
 using System;
@@ -53,6 +55,12 @@ namespace Services
             var booksDto = _mapper.Map<IEnumerable<BookDto>>(booksWithMetaData);
             var links = _bookLinks.TryGenerateLinks(booksDto, linkParameters.BookParameters.Fields,linkParameters.HttpContext);
             return (links, booksWithMetaData.MetaData);
+        }
+
+        public async Task<List<Book>> GetAllBooksAsync(bool trackChanges)
+        {
+            var books = await _manager.Book.GetAllBooksAsync(trackChanges);
+            return books;
         }
 
         public async Task<BookDto> GetOneBookByIdAsync(int id, bool trackChanges)
