@@ -44,6 +44,9 @@ builder.Services.AddMemoryCache();
 builder.Services.ConfigureRateLimitingOptions();
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddAuthentication();
+builder.Services.ConfigureIdentity();
+
 
 
 var app = builder.Build();
@@ -63,11 +66,14 @@ if (app.Environment.IsProduction())
     app.UseHsts();
 }
 
-app.UseIpRateLimiting();
 app.UseHttpsRedirection();
+
+app.UseIpRateLimiting();
 app.UseCors("CorsPolicy");
 app.UseResponseCaching();
 app.UseHttpCacheHeaders();
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
