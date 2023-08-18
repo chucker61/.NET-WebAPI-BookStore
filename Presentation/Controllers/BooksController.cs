@@ -13,6 +13,7 @@ namespace Presentation.Controllers
     [ServiceFilter(typeof(LoggerFilterAttribute))]
     [ApiController]
     [Route("api/books")]
+    //[ResponseCache(CacheProfileName = "5mins")]
     public class BooksController : ControllerBase
     {
         private readonly IServiceManager _manager;

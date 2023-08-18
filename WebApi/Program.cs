@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using NLog;
-using Presentation.ActionFilters;
 using Services.Contracts;
 using WebApi.Extensions;
 
@@ -14,6 +13,7 @@ builder.Services.AddControllers(config =>
 {
     config.RespectBrowserAcceptHeader = true;
     config.ReturnHttpNotAcceptable = true;
+    config.CacheProfiles.Add("5mins", new CacheProfile() { Duration = 5 });
 })
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
     .AddXmlDataContractSerializerFormatters();
@@ -37,6 +37,8 @@ builder.Services.ConfigureDataShaper();
 builder.Services.AddCustomMediaTypes();
 builder.Services.ConfigureLinks();
 builder.Services.ConfigureVersioning();
+builder.Services.ConfigureResponseCaching();
+builder.Services.ConfigureHttpCacheHeaders();
 
 
 
@@ -58,9 +60,9 @@ if (app.Environment.IsProduction())
 }
 
 app.UseHttpsRedirection();
-
 app.UseCors("CorsPolicy");
-
+app.UseResponseCaching();
+app.UseHttpCacheHeaders();
 app.UseAuthorization();
 
 app.MapControllers();

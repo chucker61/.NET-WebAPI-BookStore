@@ -10,6 +10,8 @@ using Services.Contracts;
 using Entities.Models;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Presentation.Controllers;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
+using Marvin.Cache.Headers;
 
 namespace WebApi.Extensions
 {
@@ -92,6 +94,18 @@ namespace WebApi.Extensions
 
                 opt.Conventions.Controller<BooksController>().HasApiVersion(new ApiVersion(1, 0));
                 opt.Conventions.Controller<BooksV2Controller>().HasDeprecatedApiVersion(new ApiVersion(2, 0));
+            });
+        }
+        public static void ConfigureResponseCaching(this IServiceCollection services)
+        {
+            services.AddResponseCaching();
+        }
+        public static void ConfigureHttpCacheHeaders(this IServiceCollection services)
+        {
+            services.AddHttpCacheHeaders(expiresOpt =>
+            {
+                expiresOpt.MaxAge = 70;
+                expiresOpt.CacheLocation = CacheLocation.Public;
             });
         }
     }
