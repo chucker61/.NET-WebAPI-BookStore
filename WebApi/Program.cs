@@ -1,3 +1,4 @@
+using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
 using Services.Contracts;
@@ -39,6 +40,9 @@ builder.Services.ConfigureLinks();
 builder.Services.ConfigureVersioning();
 builder.Services.ConfigureResponseCaching();
 builder.Services.ConfigureHttpCacheHeaders();
+builder.Services.AddMemoryCache();
+builder.Services.ConfigureRateLimitingOptions();
+builder.Services.AddHttpContextAccessor();
 
 
 
@@ -59,6 +63,7 @@ if (app.Environment.IsProduction())
     app.UseHsts();
 }
 
+app.UseIpRateLimiting();
 app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
 app.UseResponseCaching();
