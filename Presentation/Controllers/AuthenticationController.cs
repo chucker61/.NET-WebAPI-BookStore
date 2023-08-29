@@ -1,5 +1,6 @@
 ﻿using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.ActionFilters;
 using Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace Presentation.Controllers
             _service = service;
         }
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> RegisterUser([FromBody] UserDtoForRegistration userDtoForRegistration)
         {
             var result = await _service.AuthenticationService.RegisterUser(userDtoForRegistration);
@@ -34,14 +36,25 @@ namespace Presentation.Controllers
             return StatusCode(201);
         }
         [HttpPost("login")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> Authenticate([FromBody] UserDtoForAuthentication user)
         {
             if (!await _service.AuthenticationService.ValidateUser(user))
-                return Unauthorized();
-            return Ok(new
-            {
-                Token = await _service.AuthenticationService.CreateToken()
-            });
+                return Unauthorized(); // 401
+
+            var tokenDto = await _service
+                .AuthenticationService
+                .CreateToken(populateExp: true);
+
+            return Ok(tokenDto);
+        }
+        [HttpPost("refresh")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> Refresh([FromBody] TokenDto tokenDto)
+        {
+            var tokenDtotoReturn = await _service.AuthenticationService.RefreshToken(tokenDto);
+
+            return Ok(tokenDtotoReturn);
         }
     }
 }
