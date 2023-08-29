@@ -14,6 +14,9 @@ using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Marvin.Cache.Headers;
 using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace WebApi.Extensions
 {
@@ -22,13 +25,10 @@ namespace WebApi.Extensions
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("defaultConnection")));
-
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
             services.AddScoped<IRepositoryManager, RepositoryManager>();
-
         public static void ConfigureServiceManager(this IServiceCollection services) => 
             services.AddScoped<IServiceManager,ServiceManager>();
-
         public static void ConfigureLoggerManager(this IServiceCollection services) =>
             services.AddSingleton<ILoggerService, LoggerManager>();
         public static void ConfigureActionFilters(this IServiceCollection services)
@@ -117,7 +117,7 @@ namespace WebApi.Extensions
                 new RateLimitRule
                 {
                     Endpoint = "*",
-                    Limit = 3,
+                    Limit = 60,
                     Period = "1m"
                 }
             };
@@ -143,6 +143,30 @@ namespace WebApi.Extensions
             })
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
+        }
+        public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
+        {
+            var jwtSettings = configuration.GetSection("jwtSettings");
+            var secretKey = jwtSettings["secretKey"];
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            }).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = jwtSettings["validIssuer"],
+                    ValidAudience = jwtSettings["validAudience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+                };
+            });
         }
     }
 }
