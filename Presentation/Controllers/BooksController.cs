@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Presentation.Controllers
 {
+    [ApiExplorerSettings(GroupName = "v1")]
     [ServiceFilter(typeof(LoggerFilterAttribute))]
     [ApiController]
     [Route("api/books")]

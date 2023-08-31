@@ -34,6 +34,8 @@ namespace WebApi.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RefreshTokenExpiryTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -179,9 +181,9 @@ namespace WebApi.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "9d047619-0db4-48c3-bcd7-6b2106c4d452", "be91a54c-5d30-47af-bbb0-0ef55673daa4", "User", "USER" },
-                    { "e4f33572-7303-42b5-a4fa-bf4ae61c1476", "49a93622-7208-435e-b73b-b7936b54b809", "Administrator", "ADMINISTRATOR" },
-                    { "efa6c420-489e-4c37-8d39-c698d9c34c83", "a9039c6e-1f14-4da8-80b1-c4d6e20e0a25", "Editor", "EDITOR" }
+                    { "0c02eca8-f199-477f-b05f-b5ab8bed4635", "487991a5-19a0-47f6-a5dd-784b83d9ad59", "User", "USER" },
+                    { "97233cd6-0690-410b-9b81-89dce8ff3880", "099cff16-f66b-4613-a32c-5fc012ee143a", "Administrator", "ADMINISTRATOR" },
+                    { "b18ea419-9a58-4920-8b42-2bc4aa806379", "cc67451f-7a7f-4549-bd77-4f47acd2c307", "Editor", "EDITOR" }
                 });
 
             migrationBuilder.InsertData(
